@@ -13,3 +13,4 @@ Ces cartes sont des héros, avec chacun leurs spécificités et leur rareté.
 6. Engager un combat entre un héros et celui d’un autre joueur
 7. Pouvoir retrouver tous les combats d’un héros (héros adverse, résultat du combat)
 
+OK
