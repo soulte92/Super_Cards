@@ -1,8 +1,9 @@
 public class Battle {
 
-    /*
-    * Attack Method:
-    * */
+    // TODO La puissance
 
-//    public static void updateLevel(Hero hero);
+    // TODO L’armure
+
+    // TODO Les niveaux
+
 }

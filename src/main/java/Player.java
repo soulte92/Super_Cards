@@ -5,4 +5,8 @@ public class Player {
     public Player(String pseudo) {
         this.pseudo = pseudo;
     }
+
+    //TODO Ouverture d’un pack de cartes using ProbalityDistribution class
+
+    // TODO Inscription joueur
 }

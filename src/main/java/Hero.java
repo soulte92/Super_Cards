@@ -1,12 +1,12 @@
 public class Hero {
-    private String name;
+    protected String name;
     protected int hp;
-    private int xp;
+    protected int xp;
     protected int power;
     protected int armor;
     protected Speciality speciality;
     protected Rarety rarety;
-    private int level;
+    protected int level;
 
     public Hero(String name, int hp, int xp, int power, int armor, Speciality speciality, Rarety rarety, int level) {
         this.name = name;
@@ -24,5 +24,19 @@ public class Hero {
         this.speciality = speciality;
         this.rarety = rarety;
         this.level = 1;
+    }
+
+    @Override
+    public String toString() {
+        return "Hero{" +
+                "name='" + name + '\'' +
+                ", hp=" + hp +
+                ", xp=" + xp +
+                ", power=" + power +
+                ", armor=" + armor +
+                ", speciality=" + speciality +
+                ", rarety=" + rarety +
+                ", level=" + level +
+                '}';
     }
 }
