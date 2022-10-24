@@ -14,7 +14,7 @@ public class Battle {
         if(heroDefender.isDead()){
             // Increase xp
             int xpToIncrease = 1;
-            heroFighter = HeroCaracteritics.increaseXpToHero(heroFighter, 1);
+            heroFighter = HeroCaracteritics.increaseXpToHero(heroFighter, xpToIncrease);
 
             // Update heroFighter level
             heroFighter = HeroCaracteritics.updateHeroLevel(heroFighter);
