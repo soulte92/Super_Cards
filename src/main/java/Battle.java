@@ -10,11 +10,14 @@ public class Battle {
         int hpToRetrieve = heroFighter.power - heroDefender.armor;
         heroDefender = HeroCaracteritics.retrieveHpFromHero(heroDefender,hpToRetrieve);
 
-        // Increase heroFighter level and caracteristics
+        // Increase heroFighter xp and update caracteristics
         if(heroDefender.isDead()){
-            // Increase level
+            // Increase xp
             int xpToIncrease = 1;
             heroFighter = HeroCaracteritics.increaseXpToHero(heroFighter, 1);
+
+            // Update heroFighter level
+            heroFighter = HeroCaracteritics.updateHeroLevel(heroFighter);
 
             // Increase caracteristics
             double percent = 0.1;

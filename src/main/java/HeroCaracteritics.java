@@ -63,7 +63,7 @@ public class HeroCaracteritics {
         return newHero;
     }
 
-    private static Hero enhaceCaracteriticsByPerCent(Hero hero, double perCent){
+    public static Hero enhaceCaracteriticsByPerCent(Hero hero, double perCent){
         Hero newHero = new Hero(hero.name, hero.hp, hero.xp, hero.power, hero.armor, hero.speciality, hero.rarety, hero.level);
         newHero.hp += newHero.hp * perCent;
         newHero.power += newHero.power * perCent;
@@ -88,7 +88,5 @@ public class HeroCaracteritics {
         newHero.level = newHero.xp / 5;
         return newHero;
     }
-
-
 
 }
