@@ -4,6 +4,7 @@ public class Player {
 
     public Player(String pseudo) {
         this.pseudo = pseudo;
+        this.nbToken = 4;
     }
 
     //TODO Ouverture d’un pack de cartes using ProbalityDistribution class

@@ -26,6 +26,10 @@ public class Hero {
         this.level = 1;
     }
 
+    public boolean isDead(){
+        return this.hp == 0;
+    }
+
     @Override
     public String toString() {
         return "Hero{" +

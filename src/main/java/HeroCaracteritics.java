@@ -71,4 +71,24 @@ public class HeroCaracteritics {
         return newHero;
     }
 
+    public static Hero retrieveHpFromHero(Hero hero, int hpToRetrieve){
+        Hero newHero = new Hero(hero.name, hero.hp, hero.xp, hero.power, hero.armor, hero.speciality, hero.rarety, hero.level);
+        newHero.hp -= hpToRetrieve;
+        return newHero;
+    }
+
+    public static Hero increaseXpToHero(Hero hero, int xpToIncrease){
+        Hero newHero = new Hero(hero.name, hero.hp, hero.xp, hero.power, hero.armor, hero.speciality, hero.rarety, hero.level);
+        newHero.xp += xpToIncrease;
+        return newHero;
+    }
+
+    public static Hero updateHeroLevel(Hero hero){
+        Hero newHero = new Hero(hero.name, hero.hp, hero.xp, hero.power, hero.armor, hero.speciality, hero.rarety, hero.level);
+        newHero.level = newHero.xp / 5;
+        return newHero;
+    }
+
+
+
 }
