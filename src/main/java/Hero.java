@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Hero {
     protected String name;
     protected int hp;
@@ -26,8 +28,63 @@ public class Hero {
         this.level = 1;
     }
 
+    public Hero attack(Hero heroDefender){
+        // heroFighter don't attack if heroDefender is dead
+        if(heroDefender.isDead()) return heroDefender.copy();
+
+        // Decrease heroDefencer hp
+        int hpToRetrieve = this.power - heroDefender.armor;
+        heroDefender.retrieveHpFromHero(hpToRetrieve);
+
+        // Increase heroFighter xp and update caracteristics
+        if(heroDefender.isDead()){
+            // Increase xp
+            int xpToIncrease = 1;
+            Hero newHero;
+            this.increaseXpToHero(xpToIncrease);
+
+            // Update heroFighter level
+           this.updateHeroLevel();
+
+            // Increase caracteristics
+            double percent = 0.1;
+            this.enhaceCaracteriticsByPerCent(percent);
+            return heroDefender;
+        }
+        return heroDefender;
+    }
+
+    public void setCaracteristics(int newHp, int newPower, int newArmor){
+        this.hp = newHp;
+        this.power = newPower;
+        this.armor = newArmor;
+    }
+
+    public void enhaceCaracteriticsByPerCent(double perCent){
+        this.hp += this.hp * perCent;
+        this.power += this.power * perCent;
+        this.armor += this.armor * perCent;
+    }
+
+    public void retrieveHpFromHero(int hpToRetrieve){
+        this.hp -= hpToRetrieve;
+    }
+
+    public void increaseXpToHero(int xpToIncrease){
+        this.xp += xpToIncrease;
+    }
+
+    public void updateHeroLevel(){
+        this.level = this.xp / 5;
+    }
+
+    public Hero copy(){
+        Hero newHero = new Hero(this.name, this.hp, this.xp, this.power, this.armor, this.speciality, this.rarety, this.level);
+        return newHero;
+    }
+
     public boolean isDead(){
-        return this.hp == 0;
+        return this.hp <= 0;
     }
 
     @Override
@@ -42,5 +99,18 @@ public class Hero {
                 ", rarety=" + rarety +
                 ", level=" + level +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Hero)) return false;
+        Hero hero = (Hero) o;
+        return hp == hero.hp && xp == hero.xp && power == hero.power && armor == hero.armor && level == hero.level && name.equals(hero.name) && speciality == hero.speciality && rarety == hero.rarety;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, hp, xp, power, armor, speciality, rarety, level);
     }
 }

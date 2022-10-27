@@ -27,70 +27,33 @@ public class HeroCaracteritics {
 
     public static Hero initCarateristicsBySpeciality(Hero hero){
 //        this.configSpecMap();
+        Hero newHero = hero.copy();
         if(hero.speciality == Speciality.TANK){
-            return HeroCaracteritics.setCaracteristics(hero, 1000, 100, 20);
+            newHero.setCaracteristics(1000, 100, 20);
             //TODO • Puissance supplémentaires contre mages : 20
         }
         else if(hero.speciality == Speciality.KILLER){
-            return HeroCaracteritics.setCaracteristics(hero, 800, 200, 5);
+            newHero.setCaracteristics(800, 200, 5);
             //TODO • Puissance supplémentaires contre tanks : 30
         }
         else if(hero.speciality == Speciality.MAGICIAN){
-            return HeroCaracteritics.setCaracteristics(hero, 700, 150, 10);
+            newHero.setCaracteristics(700, 150, 10);
             //TODO • Puissance supplémentaires contre mages : 25
         }
-        return hero;
+        return newHero;
     }
 
     public static Hero enhaceCaracteriticsByRarety(Hero hero){
+        Hero newHero = hero.copy();
         if(hero.rarety == Rarety.COMMON){
-            hero = HeroCaracteritics.enhaceCaracteriticsByPerCent(hero, 0);
+            newHero.enhaceCaracteriticsByPerCent(0);
         }
         else if(hero.rarety == Rarety.RARE){
-            hero = HeroCaracteritics.enhaceCaracteriticsByPerCent(hero, 0.1);
+            newHero.enhaceCaracteriticsByPerCent(0.1);
         }
         else if(hero.rarety == Rarety.LEGENDARY){
-            hero = HeroCaracteritics.enhaceCaracteriticsByPerCent(hero, 0.2);
+            newHero.enhaceCaracteriticsByPerCent(0.2);
         }
-        return hero;
-    }
-
-    private static Hero setCaracteristics(Hero hero, int newHp, int newPower, int newArmor){
-        Hero newHero = HeroCaracteritics.copy(hero);
-        newHero.hp = newHp;
-        newHero.power = newPower;
-        newHero.armor = newArmor;
-        return newHero;
-    }
-
-    public static Hero enhaceCaracteriticsByPerCent(Hero hero, double perCent){
-        Hero newHero = HeroCaracteritics.copy(hero);
-        newHero.hp += newHero.hp * perCent;
-        newHero.power += newHero.power * perCent;
-        newHero.armor += newHero.armor * perCent;
-        return newHero;
-    }
-
-    public static Hero retrieveHpFromHero(Hero hero, int hpToRetrieve){
-        Hero newHero = HeroCaracteritics.copy(hero);
-        newHero.hp -= hpToRetrieve;
-        return newHero;
-    }
-
-    public static Hero increaseXpToHero(Hero hero, int xpToIncrease){
-        Hero newHero = HeroCaracteritics.copy(hero);
-        newHero.xp += xpToIncrease;
-        return newHero;
-    }
-
-    public static Hero updateHeroLevel(Hero hero){
-        Hero newHero = HeroCaracteritics.copy(hero);
-        newHero.level = newHero.xp / 5;
-        return newHero;
-    }
-
-    public static Hero copy(Hero hero){
-        Hero newHero = new Hero(hero.name, hero.hp, hero.xp, hero.power, hero.armor, hero.speciality, hero.rarety, hero.level);
         return newHero;
     }
 }

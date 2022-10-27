@@ -5,10 +5,10 @@ public class Main {
     public static void main(String[] args) {
         Hero hero1 = new Hero("toto", Speciality.MAGICIAN, Rarety.LEGENDARY);
 
-        Hero newHero1 = HeroCaracteritics.initCarateristicsBySpeciality(hero1);
-        System.out.println(newHero1);
-        newHero1 = HeroCaracteritics.enhaceCaracteriticsByRarety(newHero1);
-        System.out.println(newHero1);
+        HeroCaracteritics.initCarateristicsBySpeciality(hero1);
+        System.out.println(hero1);
+        HeroCaracteritics.enhaceCaracteriticsByRarety(hero1);
+        System.out.println(hero1);
 
         //TODO  Will serve for the card pack creation
 //        HashMap<String, Double> raretyProbabilities = new HashMap<String, Double>();
