@@ -56,7 +56,7 @@ public class HeroCaracteritics {
     }
 
     private static Hero setCaracteristics(Hero hero, int newHp, int newPower, int newArmor){
-        Hero newHero = new Hero(hero.name, hero.hp, hero.xp, hero.power, hero.armor, hero.speciality, hero.rarety, hero.level);
+        Hero newHero = HeroCaracteritics.copy(hero);
         newHero.hp = newHp;
         newHero.power = newPower;
         newHero.armor = newArmor;
@@ -64,7 +64,7 @@ public class HeroCaracteritics {
     }
 
     public static Hero enhaceCaracteriticsByPerCent(Hero hero, double perCent){
-        Hero newHero = new Hero(hero.name, hero.hp, hero.xp, hero.power, hero.armor, hero.speciality, hero.rarety, hero.level);
+        Hero newHero = HeroCaracteritics.copy(hero);
         newHero.hp += newHero.hp * perCent;
         newHero.power += newHero.power * perCent;
         newHero.armor += newHero.armor * perCent;
@@ -72,21 +72,25 @@ public class HeroCaracteritics {
     }
 
     public static Hero retrieveHpFromHero(Hero hero, int hpToRetrieve){
-        Hero newHero = new Hero(hero.name, hero.hp, hero.xp, hero.power, hero.armor, hero.speciality, hero.rarety, hero.level);
+        Hero newHero = HeroCaracteritics.copy(hero);
         newHero.hp -= hpToRetrieve;
         return newHero;
     }
 
     public static Hero increaseXpToHero(Hero hero, int xpToIncrease){
-        Hero newHero = new Hero(hero.name, hero.hp, hero.xp, hero.power, hero.armor, hero.speciality, hero.rarety, hero.level);
+        Hero newHero = HeroCaracteritics.copy(hero);
         newHero.xp += xpToIncrease;
         return newHero;
     }
 
     public static Hero updateHeroLevel(Hero hero){
-        Hero newHero = new Hero(hero.name, hero.hp, hero.xp, hero.power, hero.armor, hero.speciality, hero.rarety, hero.level);
+        Hero newHero = HeroCaracteritics.copy(hero);
         newHero.level = newHero.xp / 5;
         return newHero;
     }
 
+    public static Hero copy(Hero hero){
+        Hero newHero = new Hero(hero.name, hero.hp, hero.xp, hero.power, hero.armor, hero.speciality, hero.rarety, hero.level);
+        return newHero;
+    }
 }
