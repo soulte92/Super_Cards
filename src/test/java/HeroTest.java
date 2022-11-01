@@ -17,10 +17,13 @@ class HeroTest {
     void attackWithNormalHeroDefenderWithoutWinning() {
         Hero hero1 = new Hero("super-boy", 100, 30, 40, 5, Speciality.TANK, Rarety.COMMON, 6);
         Hero hero2 = new Hero("super-girl", 100, 30, 20, 10, Speciality.TANK, Rarety.COMMON, 6);
+        Hero hero3 = new Hero("super-dog", 100, 30, 20, 10, Speciality.MAGICIAN, Rarety.COMMON, 6);
 
         hero2 = hero1.attack(hero2);
-
         assertEquals(hero2.hp, 70);
+
+        hero3 = hero1.attack(hero3);
+        assertEquals(hero3.hp, 50);
     }
 
     @Test
@@ -33,7 +36,7 @@ class HeroTest {
         hero2 = hero1.attack(hero2);
         hero2 = hero1.attack(hero2);
         hero2 = hero1.attack(hero2);
-        System.out.println(hero2);
+//        System.out.println(hero2);
 
         // Test that HeroDefender is dead
         assertTrue(hero2.isDead());

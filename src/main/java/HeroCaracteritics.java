@@ -2,31 +2,30 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class HeroCaracteritics {
-//    HashMap<String, HashMap<String, Integer>> specialitiesMap = new HashMap<String, HashMap<String, Integer>>();
-//    public void configSpecMap(){
-//        HashMap<String, Integer> tank = new HashMap<String, Integer>();
-//        tank.put("hp", 1000);
-//        tank.put("power", 100);
-//        tank.put("armor", 20);
-////        tank.put("specialPower", 20);
-//        HashMap<String, Integer> killer = new HashMap<String, Integer>();
-//        killer.put("hp", 800);
-//        killer.put("power", 200);
-//        killer.put("armor", 5);
-//        HashMap<String, Integer> magician = new HashMap<String, Integer>();
-//        magician.put("hp", 700);
-//        magician.put("power", 150);
-//        magician.put("armor", 10);
-////        HashMap<String, Integer> specialPower = new HashMap<String, Integer>();
-////        specialPower.put("magician", 20);
-//
-//        this.specialitiesMap.put("tank", tank);
-//        this.specialitiesMap.put("killer", killer);
-//        this.specialitiesMap.put("magician", magician);
-//    }
+    public static HashMap<String, HashMap<String, Integer>> configSpecialPowerMap(){
+        HashMap<String, HashMap<String, Integer>> specialPowerMap = new HashMap<String, HashMap<String, Integer>>();
+
+        HashMap<String, Integer> tank = new HashMap<String, Integer>();
+        tank.put(Speciality.TANK.label, 0);
+        tank.put(Speciality.KILLER.label, 0);
+        tank.put(Speciality.MAGICIAN.label, 20);
+        HashMap<String, Integer> killer = new HashMap<String, Integer>();
+        killer.put(Speciality.TANK.label, 30);
+        killer.put(Speciality.KILLER.label, 0);
+        killer.put(Speciality.MAGICIAN.label, 0);
+        HashMap<String, Integer> magician = new HashMap<String, Integer>();
+        magician.put(Speciality.TANK.label, 0);
+        magician.put(Speciality.KILLER.label, 25);
+        magician.put(Speciality.MAGICIAN.label, 0);
+
+        specialPowerMap.put(Speciality.TANK.label, tank);
+        specialPowerMap.put(Speciality.KILLER.label, killer);
+        specialPowerMap.put(Speciality.MAGICIAN.label, magician);
+        
+        return specialPowerMap;
+    }
 
     public static Hero initCarateristicsBySpeciality(Hero hero){
-//        this.configSpecMap();
         Hero newHero = hero.copy();
         if(hero.speciality == Speciality.TANK){
             newHero.setCaracteristics(1000, 100, 20);
@@ -38,10 +37,32 @@ public class HeroCaracteritics {
         }
         else if(hero.speciality == Speciality.MAGICIAN){
             newHero.setCaracteristics(700, 150, 10);
-            //TODO • Puissance supplémentaires contre mages : 25
+            //TODO • Puissance supplémentaires contre KILLER : 25
         }
         return newHero;
     }
+
+    /*
+    specialPowerMap = {
+        tank: {
+            mages: 20,
+            tanks: 0,
+            killer: 0
+        },
+        mages: {
+            mages: 20,
+            tanks: 0,
+            killer: 0
+        },
+        killer: {
+            mages: 20,
+            tanks: 0,
+            killer: 0
+        }
+    }
+
+
+    * */
 
     public static Hero enhaceCaracteriticsByRarety(Hero hero){
         Hero newHero = hero.copy();

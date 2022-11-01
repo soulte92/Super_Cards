@@ -1,3 +1,4 @@
+import java.util.HashMap;
 import java.util.Objects;
 
 public class Hero {
@@ -9,6 +10,7 @@ public class Hero {
     protected Speciality speciality;
     protected Rarety rarety;
     protected int level;
+    protected HashMap<String, HashMap<String, Integer>> specialPowerMap;
 
     public Hero(String name, int hp, int xp, int power, int armor, Speciality speciality, Rarety rarety, int level) {
         this.name = name;
@@ -19,6 +21,7 @@ public class Hero {
         this.speciality = speciality;
         this.rarety = rarety;
         this.level = level;
+        this.specialPowerMap = HeroCaracteritics.configSpecialPowerMap();
     }
     public Hero(String name, Speciality speciality, Rarety rarety) {
         this.name = name;
@@ -26,6 +29,7 @@ public class Hero {
         this.speciality = speciality;
         this.rarety = rarety;
         this.level = 1;
+        this.specialPowerMap = HeroCaracteritics.configSpecialPowerMap();
     }
 
     public Hero attack(Hero heroDefender){
@@ -33,11 +37,12 @@ public class Hero {
         if(heroDefender.isDead()) return heroDefender.copy();
 
         // Decrease heroDefencer hp
-        int hpToRetrieve = this.power - heroDefender.armor;
+        int hpToRetrieve = (this.power + this.specialPowerMap.get(this.speciality.label).get(heroDefender.speciality.label)) - heroDefender.armor;
         heroDefender.retrieveHpFromHero(hpToRetrieve);
 
         // Increase heroFighter xp and update caracteristics
         if(heroDefender.isDead()){
+
             // Increase xp
             int xpToIncrease = 1;
             Hero newHero;

@@ -1,5 +1,11 @@
 public enum Rarety {
-    COMMON,
-    RARE,
-    LEGENDARY
+    COMMON("COMMON"),
+    RARE("RARE"),
+    LEGENDARY("LEGENDARY");
+
+    public final String label;
+
+    Rarety(String label) {
+        this.label = label;
+    }
 }
